@@ -2,7 +2,10 @@
 
 # Map Raster Tile Rendering - front development
 
+## FIND COORDINATE!
+
 ## Base Function
+- Find a degree and wgs84 coordinate by using marker(Just click!)
 - Mouse Wheel : Map Zoom In / Out
 - Mouse Drag : Map Moving
 
@@ -13,4 +16,4 @@
 
 ### Bug is fixing....
 
-### Exmaple site http://map.songwon.me
+### Exmaple site : http://map.songwon.me
