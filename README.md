@@ -5,7 +5,7 @@
 ## FIND COORDINATE!
 
 ## Base Function
-- Find a degree and wgs84 coordinate by using marker(Just click!)
+- Find a world degree and wgs84 coordinate by using marker(Just click!)
 - Mouse Wheel : Map Zoom In / Out
 - Mouse Drag : Map Moving
 

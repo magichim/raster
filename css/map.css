@@ -1,0 +1,76 @@
+#view {
+  position: relative;
+  width: 100%; height: 100%;
+}
+#view #map-canvas {
+  background-color: lightgray;
+}
+
+.coordinate-board {
+	position: fixed;
+  width: 230px;
+  color: #505050;
+  font-family: sans-serif;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 20px #A9A9A9;
+}
+
+#focus-board.coordinate-board {
+  top: 50px; right: 50px;
+}
+#marker-board.coordinate-board {
+	top: 120px; right: 50px;
+}
+
+.coordinate-board .category-wrap {
+  width: 100%;
+  height: 50%;
+  color: #606060;
+  font-size: 0;
+  box-sizing: border-box;
+}
+.coordinate-board .category-wrap .name {
+  display: inline-block;
+  width: 20%;
+  padding: 3px 3px;
+  color: #FFFFFF;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+#focus-board.coordinate-board .category-wrap .name {
+	background-color: #05BFC3;
+}
+#marker-board.coordinate-board .category-wrap .name {
+	background-color: #FF9F00;
+}
+
+.coordinate-board .degree > .name {
+  border-top-left-radius: 4px;
+}
+.coordinate-board .wgs84 > .name {
+  border-bottom-left-radius: 4px;
+}
+.coordinate-board .category-wrap .coordinate {
+  display: inline-block;
+  width: 40%;
+  padding: 3px 3px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+.coordinate-board .category-wrap:first-child {
+  border-bottom: 1px solid #A9A9A9;
+}
+
+#focus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+#focus .inner {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  background-color: #000000;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,29 @@
+#marker-wrap {
+  position: absolute;
+  display: none;
+} 
+#marker {
+  position: relative;
+  top: -16px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50% 50% 50% 0;
+  background-color: #FF9F00;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#marker::after {
+  position: absolute;
+  content: '';
+  width: 14px;
+  height: 14px;
+  margin: 8px 0 0 8px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
