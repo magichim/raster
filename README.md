@@ -15,5 +15,6 @@
 - There are some problem about tile image render cache and timing.
 
 ### Bug is fixing....
+### ES5 -> ES6 is porting.... (Babel, polyfill, webpack)
 
 ### Exmaple site : http://map.songwon.me
