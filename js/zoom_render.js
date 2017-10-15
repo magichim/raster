@@ -39,7 +39,7 @@ var zoom_draw_tile_image = function (f_info, mt, count_x, count_y, num_x, num_y,
     copy_context.drawImage(temp_image_tag, temp_relative_gap_px.x, temp_relative_gap_px.y, TILE_SIZE, TILE_SIZE);
     map_context.restore();
 
-    if (count_obj.count === count_obj.total) {
+    if (count_obj.count === (count_obj.total-7)) {
       mt.status_converter(true);
     }
   }
