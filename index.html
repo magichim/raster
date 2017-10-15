@@ -2,6 +2,7 @@
   <head>
     <meta charset='utf-8'/>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta name='description' content='Map Raster Tile Rendering'/>
     <meta name='keyword' content='Map, Raster, Tile Rendering'/>
     <meta name='author' content='songwonpark'/>
@@ -105,7 +106,6 @@
 
     // main
     document.addEventListener('DOMContentLoaded', function (event) {
-      device_check();
       map_canvas = document.getElementById('map-canvas');
       map_context = map_canvas.getContext('2d');
       map_canvas.width = VIEW_DOM.view.offsetWidth;
@@ -123,6 +123,7 @@
       focus_coordinate_setting(focus_info.degree, focus_info.wgs84);
       var tile_count = (2*view_tile.half_horizontal + 1) * (2*view_tile.half_vertical + 1);
       view_render(focus_info, map_transform, tile_count);
+      device_check();
     });
   </script>
 </html>
