@@ -3,6 +3,7 @@
   width: 100%; height: 100%;
 }
 #view #map-canvas {
+  position: absolute;
   background-color: lightgray;
 }
 
