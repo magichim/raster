@@ -88,9 +88,9 @@ var view_render = function (f_info, mt, tile_count) {
   var count_obj = {count: 0, total: tile_count};
 
   for (var y = -view_tile.half_vertical; y <= view_tile.half_vertical; y++) {
-    if (2**zoom_level > Math.abs(y)) {
+    if (Math.pow(2, zoom_level) > Math.abs(y)) {
       for (var x = -view_tile.half_horizontal; x <= view_tile.half_horizontal; x++) {
-        if (2**zoom_level > Math.abs(x)) {
+        if (Math.pow(2, zoom_level) > Math.abs(x)) {
           var number_x = x + f_info.tile_number.x;
           var number_y = y + f_info.tile_number.y;
           zoom_draw_tile_image(f_info, mt, x, y, number_x, number_y, count_obj);

@@ -5,9 +5,8 @@ var map_canvas_event_initialize = function (map_canvas) {
 
   map_canvas.addEventListener('mouseup', function (event) {
     const TARGET = event.currentTarget;
-
     TARGET.className = 'mouse-up';
-    
+
     if (TARGET.className === 'mouse-up' && map_move_status) {
       map_move_status = false;
       side_render(mt, mk, f_info);
@@ -50,14 +49,18 @@ var map_canvas_event_initialize = function (map_canvas) {
         const TARGET = event.currentTarget;
 
         if (TARGET.className === 'mouse-down') {
-          map_move_status = true;
-
           timer ? clearTimeout(timer) : undefined;
           timer = setTimeout(function () {
           }, 300);
 
+          var last_move_x = mt.translate.move.x;
+          var last_move_y = mt.translate.move.y;
           mt.translate.move.x += event.movementX;
           mt.translate.move.y += event.movementY;
+
+          if (last_move_x !== mt.translate.move.x || last_move_y !== mt.translate.move.y) {
+            map_move_status = true;
+          }
 
           var total_translate = mt.total_translate();
 
@@ -152,14 +155,14 @@ var mouse_wheel_event = function (event, timer, mt, mk, f_info) {
 
       timer ? clearTimeout(timer) : undefined;
       timer = setTimeout(function () {
-        var scale = Math.floor(Math.log2(mt.scale));
+        var scale = Math.floor(Math.log(mt.scale) / Math.log(2));
         var target_scale = scale >= 0 ? scale : scale + 1;
-        var remainder = mt.scale - (2**target_scale);
+        var remainder = mt.scale - Math.pow(2, target_scale);
 
         if (!minimum_status) {
           if (Math.abs(target_scale) >= 1) {
             f_info.ZOOM_LEVEL += target_scale;
-            mt.scale = 1 + (remainder / (2**target_scale));
+            mt.scale = 1 + (remainder / Math.pow(2, target_scale));
             mt.status_converter(false);
             var tile_count = (2*view_tile.half_horizontal + 1) * (2*view_tile.half_vertical + 1);
             zoom_render(f_info, mt, tile_count);

@@ -63,8 +63,8 @@ var side_render = function (mt, mk, f_info) {
 
 var move_draw_tile_image = function (focus_info, count_x, count_y, num_x, num_y) {
   var zoom_level = focus_info.ZOOM_LEVEL;
-  var mod_num_x = num_x >= 0 ? num_x % (2 ** zoom_level) : (num_x % (2 ** zoom_level)) + (2 ** zoom_level);
-  var mod_num_y = num_y >= 0 ? num_y % (2 ** zoom_level) : (num_y % (2 ** zoom_level)) + (2 ** zoom_level);
+  var mod_num_x = num_x >= 0 ? num_x % Math.pow(2, zoom_level) : (num_x % Math.pow(2, zoom_level)) + Math.pow(2, zoom_level);
+  var mod_num_y = num_y >= 0 ? num_y % Math.pow(2, zoom_level) : (num_y % Math.pow(2, zoom_level)) + Math.pow(2, zoom_level);
 
   const temp_image_tag = document.createElement('img');
   const relative_gap_px = {
@@ -81,7 +81,7 @@ var move_draw_tile_image = function (focus_info, count_x, count_y, num_x, num_y)
   var total_translate_y = mt.translate.focus.y;
 
   const cname = TILE_URL_CNAME[Math.floor(Math.random()*10%3)];
-  const tile_image_url = `https://${cname}.${TILE_IMAGE_URL}/${zoom_level}/${mod_num_x}/${mod_num_y}.png`;
+  const tile_image_url = 'https://'+cname+'.'+TILE_IMAGE_URL+'/'+zoom_level+'/'+mod_num_x+'/'+mod_num_y+'.png';
   temp_image_tag.crossOrigin = 'anonymous';
   temp_image_tag.src = tile_image_url;
   temp_image_tag.onload = function () {

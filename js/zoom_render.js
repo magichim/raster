@@ -10,8 +10,8 @@ var zoom_render = function (f_info, mt, tile_count) {
 
 var zoom_draw_tile_image = function (f_info, mt, count_x, count_y, num_x, num_y, count_obj) {
   var zoom_level = f_info.ZOOM_LEVEL;
-  var mod_num_x = num_x >= 0 ? num_x % (2 ** zoom_level) : (num_x % (2 ** zoom_level)) + (2 ** zoom_level);
-  var mod_num_y = num_y >= 0 ? num_y % (2 ** zoom_level) : (num_y % (2 ** zoom_level)) + (2 ** zoom_level);
+  var mod_num_x = num_x >= 0 ? num_x % Math.pow(2, zoom_level) : (num_x % Math.pow(2, zoom_level)) + Math.pow(2, zoom_level);
+  var mod_num_y = num_y >= 0 ? num_y % Math.pow(2, zoom_level) : (num_y % Math.pow(2, zoom_level)) + Math.pow(2, zoom_level);
 
   const temp_image_tag = document.createElement('img');
   const relative_gap_px = {
@@ -26,7 +26,8 @@ var zoom_draw_tile_image = function (f_info, mt, count_x, count_y, num_x, num_y,
   var total_translate_x = mt.translate.focus.x + mt.translate.move.x;
   var total_translate_y = mt.translate.focus.y + mt.translate.move.y;
   const cname = TILE_URL_CNAME[Math.floor(Math.random()*10%3)];
-  const tile_image_url = `https://${cname}.${TILE_IMAGE_URL}/${zoom_level}/${mod_num_x}/${mod_num_y}.png`;
+  const tile_image_url = 'https://'+cname+'.'+TILE_IMAGE_URL+'/'+zoom_level+'/'+mod_num_x+'/'+mod_num_y+'.png';
+  
   
   temp_image_tag.crossOrigin = 'anonymous';
   temp_image_tag.src = tile_image_url;
@@ -49,7 +50,7 @@ var zoom_draw_tile_image = function (f_info, mt, count_x, count_y, num_x, num_y,
 
 
 var zoom_set_base_value = function (f_info, mt) {
-  f_info.TILE_UNIT_BY_WGS84 = WGS84_SIZE / (2 ** f_info.ZOOM_LEVEL);
+  f_info.TILE_UNIT_BY_WGS84 = WGS84_SIZE / Math.pow(2, f_info.ZOOM_LEVEL);
   f_info.PX_BY_WGS84 = f_info.TILE_UNIT_BY_WGS84 / TILE_SIZE;
   f_info.wgs84 = latlon2wgs(f_info.degree.lon, f_info.degree.lat);
 
