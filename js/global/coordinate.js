@@ -11,15 +11,19 @@ const BOARD_DOM = {
 };
 
 var three_decimal_round = function (number) {
-  return Math.round(number * 1000) /1000;
+  return Math.round(number * 1000) / 1000;
+};
+
+var eight_decimal_round = function (number) {
+  return Math.round(number * 100000000) / 100000000;
 };
 
 var focus_coordinate_setting = function (degree, wgs84) {
   [].slice.call(BOARD_DOM.focus.DEGREE.childNodes).filter(function (value) {
     return value.nodeType === 1;
   }).forEach(function (value, index) {
-    index === 1 ? value.textContent = three_decimal_round(degree.lon) : 
-      index === 2 ? value.textContent = three_decimal_round(degree.lat) : undefined;
+    index === 1 ? value.textContent = eight_decimal_round(degree.lon) : 
+      index === 2 ? value.textContent = eight_decimal_round(degree.lat) : undefined;
   });
   [].slice.call(BOARD_DOM.focus.WGS84.childNodes).filter(function (value) {
     return value.nodeType === 1;
@@ -33,8 +37,8 @@ var marker_coordinate_setting = function (degree, wgs84) {
   [].slice.call(BOARD_DOM.marker.DEGREE.childNodes).filter(function (value) {
     return value.nodeType === 1;
   }).forEach(function (value, index) {
-    index === 1 ? value.textContent = three_decimal_round(degree.lon) : 
-      index === 2 ? value.textContent = three_decimal_round(degree.lat) : undefined;
+    index === 1 ? value.textContent = eight_decimal_round(degree.lon) : 
+      index === 2 ? value.textContent = eight_decimal_round(degree.lat) : undefined;
   });
   [].slice.call(BOARD_DOM.marker.WGS84.childNodes).filter(function (value) {
     return value.nodeType === 1;
